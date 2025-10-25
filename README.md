@@ -90,13 +90,12 @@ http://127.0.0.1:5000/
 ## 📋 Cách sử dụng
 
 ### 🧾 Trên giao diện chính:
-1. Nhập **OpenAI API Key**
-2. Upload **Data CSV**
-3. Chọn **Metadata Source**:
+1. Upload **Data CSV**
+2. Chọn **Metadata Source**:
    - Nếu chọn *Salesforce API*: điền thông tin đăng nhập và Object name
    - Nếu chọn *CSV*: upload file metadata CSV có 2 cột `label`, `api_name`
-4. Nhấn **Generate Mapping**
-5. Xem kết quả mapping ở trang kết quả
+3. Nhấn **Generate Mapping**
+44. Xem kết quả mapping ở trang kết quả
 
 ---
 
