@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapping Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body class="grey lighten-4">
+    <div class="container">
+        <h4 class="center-align">📋 Suggested Mapping</h4>
+        <div class="card white z-depth-2">
+        <div class="card-content">
+            <table class="highlight">
+            <thead><tr><th>CSV Column</th><th>Salesforce Field</th></tr></thead>
+            <tbody>
+                {% for key, value in mapping.items() %}
+                <tr><td>{{ key }}</td><td>{{ value }}</td></tr>
+                {% endfor %}
+            </tbody>
+            </table>
+            <a href="/" class="btn blue right">← Back</a>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

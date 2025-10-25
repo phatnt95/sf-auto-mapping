@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salesforce Auto Mapper</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body { padding: 2rem; background: #f4f6f8; }
+        .card { padding: 1.5rem; border-radius: 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h4 class="center-align">🔄 Salesforce Auto Mapper (CSV Only)</h4>
+        <form action="/map" method="post" enctype="multipart/form-data">
+        <div class="card">
+            <div class="file-field input-field">
+            <div class="btn blue">
+                <span>Upload Data CSV</span>
+                <input type="file" name="data_csv" accept=".csv" required>
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="Upload CSV file">
+            </div>
+            </div>
+
+            <p>Metadata Source:</p>
+            <p>
+            <label>
+                <input name="metadata_source" type="radio" value="api" checked />
+                <span>Salesforce API</span>
+            </label>
+            <label>
+                <input name="metadata_source" type="radio" value="csv" />
+                <span>CSV File</span>
+            </label>
+            </p>
+
+            <div id="api-fields">
+            <div class="input-field"><input name="username"><label>Salesforce Username</label></div>
+            <div class="input-field"><input type="password" name="password"><label>Password</label></div>
+            <div class="input-field"><input name="token"><label>Security Token</label></div>
+            <div class="input-field"><input name="object_name"><label>Object Name (e.g. Contact)</label></div>
+            </div>
+
+            <div id="csv-fields" style="display:none;">
+            <div class="file-field input-field">
+                <div class="btn green">
+                <span>Metadata CSV</span>
+                <input type="file" name="metadata_csv" accept=".csv">
+                </div>
+                <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="Upload metadata CSV file">
+                </div>
+            </div>
+            </div>
+
+            <button type="submit" class="btn waves-effect waves-light blue right">Generate Mapping</button>
+        </div>
+        </form>
+    </div>
+
+    <script>
+        const apiFields = document.getElementById("api-fields");
+        const csvFields = document.getElementById("csv-fields");
+        document.querySelectorAll("input[name='metadata_source']").forEach(radio => {
+        radio.addEventListener("change", (e) => {
+            if (e.target.value === "api") {
+            apiFields.style.display = "block";
+            csvFields.style.display = "none";
+            } else {
+            apiFields.style.display = "none";
+            csvFields.style.display = "block";
+            }
+        });
+        });
+    </script>
+</body>
+</html>
